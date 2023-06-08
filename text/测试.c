@@ -55,8 +55,10 @@
 int main()
 {
 	//int a = sizeof(char);
-	char a = -256;
-	printf("%d",  a);
+	int a = 1, b = 2, c = 3, d = 4, e = 5;
+	int k = 0;
+	k = a>b ? c : d>e ? d : e;
+	printf("%d ", k);
 	return 0;
 
 }

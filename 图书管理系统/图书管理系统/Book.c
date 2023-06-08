@@ -15,8 +15,12 @@ void loadBook(struct Book*ps)//加载文件记录
         return;
     }
         struct BookInfo tmp = { 0 };
-        while (fread(&tmp, sizeof(struct BookInfo), 1, pf))
+		while (fscanf(pf, "%s ", &(tmp.name)) != EOF)
         {
+			
+			fscanf(pf, "%s ", &(tmp.ISBN));
+			fscanf(pf, "%s ", &(tmp.price));
+			fgetc(pf);
             ps->data[ps->size] = tmp;
             ps->size++;
             CheckCapacity(ps);
@@ -60,16 +64,39 @@ void CheckCapacity(struct Book*ps)//检查yu增容
 //添加
 void Add(struct Book * ps)
 {
-    CheckCapacity(ps);
-        printf("请输入姓名>:"); 
-        scanf("%s", ps->data[ps->size].name);
-        printf("请输入ISBN>:"); 
-        scanf("%s", ps->data[ps->size].ISBN);
-        printf("请输入价格>:"); 
-        scanf("%s", ps->data[ps->size].price);
-
-    ps->size++;
-    printf("添加成功\n");
+	CheckCapacity(ps);
+	struct BookInfo tmp;
+	printf("请输入姓名>:");
+	scanf("%s", tmp.name);
+	printf("请输入ISBN>:");
+	scanf("%s", tmp.ISBN);
+	printf("请输入价格>:");
+	scanf("%s", tmp.price);
+	int ret = 0;
+	for (int i = 0; i < ps->size; i++)
+	{
+		if (!strcmp(ps->data[i].name ,tmp.name)||!strcmp(ps->data[i].ISBN,tmp.ISBN))
+		{
+			printf("书籍已存在，是否覆盖？(y/n)\n");
+			char flag[5];
+			scanf("%s", &flag);
+			if (!strcmp(flag,"y"))
+			{
+				ps->data[i] = tmp;
+				printf("覆盖成功\n");
+				system("pause");
+				return;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+	ps->data[ps->size] = tmp;
+	ps->size++;
+	printf("添加新书籍成功\n");
+	system("pause");
 }
 
 static int Find(struct Book *ps)
@@ -90,12 +117,12 @@ static int Find(struct Book *ps)
 void Del(struct Book *ps)
 {
     int i = 0;
-    printf("请输入编号>:");
+    printf("请输入需要删除的书籍的书名>:");
     scanf("%d", &i);
     i -= 1;
     if (i < 0 || i > ps->size)
     {
-        printf("输入有误\n");
+        printf("没有该书籍\n");
     }
     else
     {
@@ -106,65 +133,103 @@ void Del(struct Book *ps)
         ps->size--;
         printf("删除成功\n");
     }
+	system("pause");
 }
 
-void Show(struct Book *ps)
+void Print(const struct Book *ps , int i )
+{
+	printf("%-20s %-10s %-5s\n",
+		ps->data[i].name,
+		ps->data[i].ISBN,
+		ps->data[i].price);
+}
+
+void Show(const struct Book *ps)
 {
     if (ps->size == 0)
         printf("无数据\n");
     else
     {
-        printf("NO:     %-30s\t%-20s\t%-10s\n", 
-            "name",
-            "ISBN",
-            "price");
-        for (int i = 0; i < ps->size; i++)
-        {
-            printf("NO.%-d\t%-30s%-20s\t%-10s\n",
-                i+1,
-                ps->data[i].name,
-                ps->data[i].ISBN,
-                ps->data[i].price);
-        }
+		printf("\t%-20s %-10s %-5s\n",
+			"name",
+			"ISBN",
+			"price");
+		for (int i = 0; i < ps->size; i++)
+		{
+			printf("NO:%d\t", i+1);
+			Print(ps,i);
+		}
     }
+	system("pause");
 }
 
 void Search(struct Book *ps)
 {
-    printf("请输入查找的书名>:\n");
+    printf("请输入需要查找的书籍的书名>:\n");
 
     int i = Find(ps);
     if (i == -1)
     {
-        printf("数据不存在\n");
+        printf("没有该书籍\n");
     }
     else
     {
-        printf("NO.%-d\t%-30s%-20s\t%-10s\n",
-            i + 1,
-            ps->data[i].name,
-            ps->data[i].ISBN,
-            ps->data[i].price);
+		printf("\t%-20s %-10s %-5s\n",
+			"name",
+			"ISBN",
+			"price");
+		Print(ps, i);
+        //printf("NO.%-d\t%-20s%-10s\t%-5s\n",
+        //    i + 1,
+        //    ps->data[i].name,
+        //    ps->data[i].ISBN,
+        //    ps->data[i].price);
     }
+	system("pause");
 }
 
 void Mod(struct Book *ps)
 {
-    int i = 0;
-    printf("请输入编号>:");
-    scanf("%d", &i);
-    if (i < 0 && i >= ps->size)
+    printf("请输入要修改的书名>:");
+	int i = Find(ps);
+    if (i == -1)
     {
-        printf("数据不存在\n");
+        printf("没有该书籍\n");
     }
     else
     {
-        printf("请输入姓名>:"); scanf("%s", ps->data[i-1].name);
-        printf("请输入ISBN>:"); scanf("%s", ps->data[i-1].ISBN);
-        printf("请输入价格>:"); scanf("%s", ps->data[i-1].price);
+        printf("请输入姓名>:"); scanf("%s", ps->data[i].name);
+        printf("请输入ISBN>:"); scanf("%s", ps->data[i].ISBN);
+        printf("请输入价格>:"); scanf("%s", ps->data[i].price);
 
         printf("修改成功\n");
     }
+	system("pause");
+}
+
+void sort(struct Book *ps)
+{
+	struct BookInfo tmp;
+	int flag = 0;//哨兵卫
+	for (int i = 0; i < ps->size; ++i)
+	{
+		for (int j = 1; j < ps->size - i; ++j)
+		{
+			if (strcmp(ps->data[j-1].name, ps->data[j].name)>0)
+			{
+				tmp = ps->data[j - 1];
+				ps->data[j - 1] = ps->data[j];
+				ps->data[j] = tmp;
+				flag = 1;
+			}
+		}
+		if (flag == 0)
+		{
+			break;
+		}
+	}
+	printf("排序成功\n");
+	system("pause");
 }
 
 void Destroy(struct Book *ps)
@@ -186,9 +251,13 @@ void Save(struct Book *ps)
     }
     for ( i = 0; i < ps->size; i++)
     {
-        fwrite(ps->data + i, sizeof(struct BookInfo), 1, pf);
+        //fwrite(ps->data + i, sizeof(struct BookInfo), 1, pf);
+		fprintf(pf, "%s %s %s\n", ps->data[i].name ,ps->data[i].ISBN , ps->data[i].price);
+		//fprintf(pf, "%s ", ps->data->ISBN);
+		//fprintf(pf, "%s ", ps->data->price);
     }
     fclose(pf);
     pf = NULL;
     printf("文件保存成功\n");
+	system("pause");
 }

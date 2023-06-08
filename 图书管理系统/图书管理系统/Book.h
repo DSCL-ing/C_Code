@@ -11,7 +11,7 @@
 #define MAX_ISBN 20   
 #define MAX_PRICE 10
 
-enum option{ EXIT, ADD, DEL, SEARCH, MOD, SHOW ,SAVE};
+enum option{ EXIT, ADD, DEL, SEARCH, MOD,SORT, SHOW ,SAVE};
 
 
 //图书信息//NAME ISBN PRICE
@@ -23,11 +23,11 @@ struct BookInfo
 
 };
 
-//控制变量
+
 struct Book
 {
     int size;
-    int capacity;//容量
+    int capacity;
     struct BookInfo *data;
 };
 
@@ -39,19 +39,22 @@ void Initialization(struct Book *ps);
 void Add(struct Book * ps);
 
 
-//删除数据
+//删除
 void Del(struct Book *ps);
 
-//显示数据
-void Show(struct Book *ps);
+//显示
+void Show(const struct Book *ps);
 
-//查找数据
+//查找
 void Search(struct Book *ps);
 
-//修改数据
+//修改
 void Mod(struct Book *ps);
 
-//销毁空间
+//冒泡排序
+void sort(struct Book *ps);
+
+//销毁
 void Destroy(struct Book *ps);
 
 //存储到文件

@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+
 
 #include"Book.h"
 
@@ -44,7 +44,7 @@ void Initialization(struct Book *ps)
 
 void CheckCapacity(struct Book*ps)//检查yu增容
 {
-    if (ps->capacity <= ps->size){
+    if (ps->capacity == ps->size){
     }
     else{
         return;
@@ -73,14 +73,14 @@ void Add(struct Book * ps)
 	printf("请输入价格>:");
 	scanf("%s", tmp.price);
 	int ret = 0;
-	for (int i = 0; i < ps->size; i++)
+	for (int i = 0; i < ps->size; i++)//遍历
 	{
 		if (!strcmp(ps->data[i].name ,tmp.name)||!strcmp(ps->data[i].ISBN,tmp.ISBN))
 		{
 			printf("书籍已存在，是否覆盖？(y/n)\n");
 			char flag[5];
 			scanf("%s", &flag);
-			if (!strcmp(flag,"y"))
+			if (!strcmp(flag, "y") || !strcmp(flag, "Y"))
 			{
 				ps->data[i] = tmp;
 				printf("覆盖成功\n");
@@ -89,7 +89,9 @@ void Add(struct Book * ps)
 			}
 			else
 			{
-				break;
+				printf("添加取消\n");
+				system("pause");
+				return;//不允许相同书籍出现
 			}
 		}
 	}

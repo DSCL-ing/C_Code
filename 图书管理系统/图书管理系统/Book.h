@@ -1,12 +1,14 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
+#pragma once
+
 #include<stdio.h>
 #include<assert.h>
 #include<string.h>
 #include<stdlib.h>
 
         
-#define DEFAULT_SZ 1000
+#define DEFAULT_SZ 5
 #define MAX_NAME 30
 #define MAX_ISBN 20   
 #define MAX_PRICE 10

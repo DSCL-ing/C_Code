@@ -3050,7 +3050,7 @@ char 有符号数  补码 存放                             无符号数
 
 //_____________________________________________________________________________________
 //函数指针
-//void (*p)(int,int); 
+//void (*p)(int,int);  //语法::> 返回值 (*函数指针名)(类型...) 
 //void* p(int,int);   //error:p先和函数（）结合成函数名，返回值为void*
 
 //函数地址
@@ -3071,8 +3071,9 @@ char 有符号数  补码 存放                             无符号数
 //函数指针重命名
 //typedef unsigned int uint;              //true
 //typedef void(*)(int) pfun_t;            //error（错误）  fales（非法，假） fault(故障)
-//typedef void(*pfun_t)(int);             //true（真）
-//
+//typedef void(*pfun_t)(int);             //true（真） 
+   //语法: typedef 返回值类型(*函数指针重命名)(参数); //--基本上和函数指针一样
+
 //void(*signal(int, void(*)(int)))(int);
 //pfun_t signal(int, pfun_t);
 

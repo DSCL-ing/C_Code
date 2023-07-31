@@ -60,6 +60,19 @@ SListNode *FindSList(SListNode *phead, SLDataType x)
 	return NULL;
 }
 
+SListNode* FindElement(SListNode*L, SLDataType x)
+{
+	if (!L)
+	{
+		return NULL;
+	}
+	if (L->data == x)
+	{
+		return L;
+	}
+	   return FindElement(L->next, x);
+}
+
 
 
 //pphead=&phead  //目的要改变phead的值

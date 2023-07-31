@@ -2,6 +2,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<assert.h>
 
 typedef int SLDataType;
 
@@ -93,4 +94,6 @@ void InsertAfterSList(SListNode **pphead, SListNode *pos, SLDataType x);
 void EraseSList(SListNode **pphead, SListNode *pos);
 
 
-void SListEraseAfter(SListNode* pos)
+void SListEraseAfter(SListNode* pos);
+
+SListNode* FindElement(SListNode*L, SLDataType x);

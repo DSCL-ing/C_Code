@@ -39,7 +39,7 @@ void Initialization(struct Book *ps)
     }
     ps->size = 0;
     ps->capacity = DEFAULT_SZ;
-    loadBook(ps);
+    //loadBook(ps);
 }
 
 void CheckCapacity(struct Book*ps)//ºÏ≤Èyu‘ˆ»›

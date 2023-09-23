@@ -10,6 +10,7 @@
 //strlen("abc") - strlen("abcdef") < 0 吗？，无符号减无符号得无符号 （size_t == unsigned int）
 
 //assert不能使用在递归
+//assert是个宏,只在debug存在,release中会被关闭
 
 //perror <stdio.h> perror("hello");//hello：+错误信息
 

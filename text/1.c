@@ -3051,7 +3051,12 @@ char 有符号数  补码 存放                             无符号数
 //_____________________________________________________________________________________
 //函数指针
 //void (*p)(int,int);  //语法::> 返回值 (*函数指针名)(类型...) 
-//void* p(int,int);   //error:p先和函数（）结合成函数名，返回值为void*
+//---------------------------------------------------------------void* p(int,int);   //error:p先和函数（）结合成函数名，返回值为void*
+//该函数指针的类型是 void (*)(int,int)
+//指针变量是p ,类型是 void(*)(int,int)
+
+//函数指针类型重命名:
+//typedef void(*p)(int,int) //把void(*)(int,int)类型重命名成p //方便使用函数类型,不用再写一大串函数类型如void(*)(int,int)   fun(){};
 
 //函数地址
 //&函数名和函数名都是函数的地址。
@@ -4656,9 +4661,37 @@ printf("%d\n", sizeof(u));//8
 //}
 
 //fgets:（文本行输入函数）一次操作一行文本(不带换行)
+
+
+// Remarks
+/*
+he fgets function reads a string from the input stream argument and stores it in string. fgets reads characters from the current stream position to and including the first newline character, to the end of the stream, or until the number of characters read is equal to n – 1, whichever comes first. The result stored in string is appended with a null character. The newline character, if read, is included in the string. 
+
+fgets is similar to the gets function; however, gets replaces the newline character with NULL. fgetws is a wide-character version of fgets. 
+
+fgetws reads the wide-character argument string as a multibyte-character string or a wide-character string according to whether stream is opened in text mode or binary mode, respectively. For more information about using text and binary modes in Unicode and multibyte stream-I/O, see Text and Binary Mode File I/O and Unicode Stream I/O in Text and Binary Modes.
+
+备注
+
+fgets函数从输入流参数中读取一个字符串，并将其存储在字符串中。fgets从当前流位置读取字符，包括第一个换行符，到流的末尾，或者直到读取的字符数等于n–1，以先到者为准。存储在字符串中的结果附加了一个空字符。换行符（如果已读取）将包含在字符串中。
+
+fgets类似于gets函数；但是，gets将换行符替换为NULL。fgetws是fgets的宽字符版本。
+
+fgetws根据流是以文本模式还是二进制模式打开，分别将宽字符参数字符串读取为多字节字符串或宽字符串。有关在Unicode和多字节流I/O中使用文本和二进制模式的更多信息，请参阅文本和二进制方式中的文本和二进制文件I/O和Unicode流I/O。
+
+*/
+//即:fgets按size读,什么都读进去,换行也会(如果最后是回车则会自动换行),并且最后会多一个空间,并放入\0(空字符).
+//如"fakljgkljag  \n" -- \n是回车的,也被读进去了,最后隐藏了个\0.
+//因为我们要回车才能结束fgets,所以\n不可避免读入,如果要消除回车,只能后续代码处理掉
+
+
+
+
+
 //Get a string from a stream.从流中获取一个字符串
 //char *fgets(char*string, int n, FILE*stream);
 //读的时候注意换行，看不见但是也会读取，
+
 
 //n:要读取的最大字符数 Maximum number of characters to read
 //string:storage location for data.数据的存储位置

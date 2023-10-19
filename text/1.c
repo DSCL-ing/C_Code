@@ -37,7 +37,7 @@
 #include<math.h>
 
 #include<stdio.h>//库函数标准
-#include<strlin.h>
+#include<string.h>
 //#define MAX 10//定义常量(常量不可改动，自增自减的，没内存占用。预编译后不存在)
 //定义没中大括号不用“;”
 //直接全局定义#define XX 123

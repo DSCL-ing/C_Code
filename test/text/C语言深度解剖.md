@@ -226,7 +226,7 @@ printf("%d\n",sizeof int );  //不存在
 - if(0){ //... }注释法,在看到if(0)时,有可能这是一个注释,不推荐这种做法,但是需要认识.
 
 #### if的执行顺序
-1. 先执行完毕if括号()中的表达式or某种函数,得到表达式的真假结果
+1. 计算功能:先执行完毕if括号()中的表达式or某种函数,得到表达式的真假结果
 2. 判定功能:根据表达式结果进行条件判定
 3. 分支功能:根据判定结果进行分支  
     > (if有判定和分支两个功能,而switch只有判定而没有分支功能,因此必须使用break)
@@ -265,7 +265,7 @@ printf("%d\n",sizeof int );  //不存在
 #include<stdio.h>
 #include<math.h>
 
-#define EPSILON 0.0000000000000001 //自定义精度,验证的最小精度,16位
+#define EPSILON 0.0000000000000001 //自定义精度
 int main()
 {
     double x = 1.0;
@@ -291,7 +291,7 @@ int main()
     double y = 0.1;
 
     //验证x - 0.9 是否等于 0.1
-    //<float.h> 内置最小精度值 DBL_EPSILON 和 FLT_EPSILON ,1.0+DBL_EPSILON != 1.0 ,1.0加上一个很小很小的值不等于1.0,EPSILON就是这个很小的值,数学概念,略
+    //<float.h> 内置最小精度值 DBL_EPSILON 和 FLT_EPSILON ,1.0+DBL_EPSILON != 1.0 ,EPSILON是改变1.0的最小的值,数学概念,略
     if(fabs((x-0.9)- y) < DBL_EPSILON ) printf("aaaa\n");
     else printf("bbbb\n");
     

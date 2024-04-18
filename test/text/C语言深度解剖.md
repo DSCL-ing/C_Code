@@ -305,10 +305,60 @@ int main()
 int main()
 {
     double x = 0.0;
-
+    // double x  = 0.00000000000000000000000000001; //很小也可以认为等于0
     if(fabs(x) < DBL_EPSILON ) printf("等于0\n");
     else printf("不等于0\n");
     
     return 0;
 }
 ```
+
+#### 补充:如何理解强制类型转化
+**强制类型转化:不改变数据本身,只改变数据的类型**
+- "123456" -> int:123456
+```
+字符串"123456"如何转化成整型值123456,能强转吗? 答案是不能,只能通过算法进行转化
+
+因为"123456"的空间至少占了7个,而整型int只占4个字节.
+```
+- ##### 不同类型的0
+```
+printf("%d\n",0);
+printf("%d\n",'\0');
+printf("%d\n",NULL); //(void*)0
+```
+![不同类型的0](../img/不同类型的0.png)
+
+### 1.8switch case组合
+- **基本语法结构**  
+```
+//switch只能对整数进行判定
+switch(整型变量/常量/整型表达式){
+    case var1:
+        break;
+    case var2:
+        break;
+    case var3:
+        break;
+    default:
+        break;
+}
+推荐使用switch的场景:只能用于整数判定且分支很多的情况下
+```
+
+- switch case 分解
+switch本身没有判断和分支能力,switch是拿着结果去找case进行匹配,  
+case具有判断能力,但没有分支能力,case是通过break完成分支功能
+break具有相当于if的分支能力.
+
+#### (补充) 屏蔽警告的方法
+```
+error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+方法1:
+#pragma warning(disable:4996)
+方法2:
+#define _CRT_SECURE_NO_WARNINGS //该宏定义必须写在文件的首行(头文件的前面)才有效
+(如果宏没有宏值,则只能用在#ifdef等条件编译语句中,即只用于标识)
+```
+
+

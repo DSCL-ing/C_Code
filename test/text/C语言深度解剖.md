@@ -346,10 +346,11 @@ switch(整型变量/常量/整型表达式){
 推荐使用switch的场景:只能用于整数判定且分支很多的情况下
 ```
 
-- switch case 分解
+- switch case 的功能
 switch本身没有判断和分支能力,switch是拿着结果去找case进行匹配,  
-case具有判断能力,但没有分支能力,case是通过break完成分支功能
-break具有相当于if的分支能力.
+case具有判定能力,但没有分支能力,case是通过break完成分支功能  
+break具有分支功能,相当于if的分支能力.  
+default相当else,处理异常情况
 
 #### (补充) 屏蔽警告的方法
 ```
@@ -361,4 +362,36 @@ error C4996: 'scanf': This function or variable may be unsafe. Consider using sc
 (如果宏没有宏值,则只能用在#ifdef等条件编译语句中,即只用于标识)
 ```
 
+- ##### 在case中执行多条语句,建议case后都带上花括号.
+  在case中定义变量,直接写会警告,需要带上花括号,但不建议在case中定义变量,如果非要这么做,可以封装成函数来替代.并且
+![case](../img/case警告.png)  
 
+- ##### 多个case执行同样语句
+```C
+int main()
+{
+    int n = 0 ;
+    scanf("%d",&n);
+    switch (n)
+    {
+        case 1: case 2: case 3: case 4: case 5:
+            puts("周内");
+            break;
+        case 6:
+            puts("周六");
+            break;
+        case 7:
+            puts("周日");
+            break;
+        default:
+            break;
+    }
+    return 0;
+}
+```
+
+- default可以在switch中的任意位置,一般习惯放在最后的case后
+- switch中尽量不要单独出现return.一般习惯用break,突然return容易搞混
+- switch中不要使用bool值,不好维护
+- case的值必须是数字常量,不能是`const int a = 1;`这种
+- 按执行频率排列case语句,频率越高越靠前,能减少匹配次数

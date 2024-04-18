@@ -12,12 +12,9 @@
 
 int main()
 {
-    double x = 1.0;
-    double y = 0.1;
+    double x = 0.0;
 
-    //验证x - 0.9 是否等于 0.1
-    //<float.h> 内置最小精度值 DBL_EPSILON 和 FLT_EPSILON ,1.0+DBL_EPSILON != 1.0 ,1.0加上一个很小很小的值不等于1.0,EPSILON就是这个很小的值,数学概念,略
-    if(fabs((x-0.9)- y) < DBL_EPSILON ) printf("aaaa\n");
+    if(fabs(x) < DBL_EPSILON ) printf("aaaa\n");
     else printf("bbbb\n");
     
     return 0;

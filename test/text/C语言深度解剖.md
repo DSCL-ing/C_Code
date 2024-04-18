@@ -300,3 +300,15 @@ int main()
 ```
 ![浮点比较方法1](../img/浮点比较方法1.png)
 
+- 浮点数与"零值"比较,只需要判定它是否小于EPSILON即可
+```
+int main()
+{
+    double x = 0.0;
+
+    if(fabs(x) < DBL_EPSILON ) printf("等于0\n");
+    else printf("不等于0\n");
+    
+    return 0;
+}
+```

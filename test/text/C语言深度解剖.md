@@ -475,10 +475,37 @@ do while结构需要在while()后加上分号，容易忘记
 
 
 ### 1.10 goto关键字
+##### goto的用法
+- 向下跳转
+```
+int main()
+{
+    puts("hello world 1!");
+    goto end;
+    puts("hello world 2!");
+end:
+    puts("hello world 3!");
+    return 0;
+}
+```
+-向上跳转
+```
+//用goto实现的循环
+int main()
+{
+    int i = 0;
+start:
+    printf("[%d] goto running ...\n",i);
+    i++;
+    if(i<10) goto start;
+    return 0;
+}
+```
+- goto只能在本函数内使用,不能跨函数
+- goto很灵活,容易出现问题,因此不受欢迎.但很多项目中goto用得也不少,在有能力的情况下可以使用
 
-
-
-
+### 1.11 void
+- void不能定义变量,因为void的类型大小是不确定的.
 
 
 

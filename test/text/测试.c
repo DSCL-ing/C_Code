@@ -6,11 +6,10 @@
 
 int main()
 {
-    int count = 10; //循环条件初始化
-    while (count > 10) //循环条件判定
-    {
-        printf("%d\n", count);
-        count--; //循环条件更新
-    }
+    int i = 0;
+start:
+    printf("[%d] goto running ...\n",i);
+    i++;
+    if(i<10) goto start;
     return 0;
 }

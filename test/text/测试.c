@@ -1,22 +1,14 @@
-﻿
-#define _CRT_SECURE_NO_WARNINGS 
-#include<math.h>
-#include<stdio.h>
-//#pragma warning(disable:4996)
+﻿#include<stdio.h>
 
-
-double arr[10];
-int main()
+int getDate()
 {
-    for (int i = 0; i < 10; i++)
-    {
-        printf("%p ",arr+i);
-    }
-    puts("");
-    for (int i = 0; i < 10; i++)
-    {
-        printf("%f ",*(arr+i));
-    }
-    return 0;
+    int x = 0x11223344;
+    puts("getDate");
+    return x;
 }
 
+int main()
+{
+    int y = getDate();
+    return 0;
+}

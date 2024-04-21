@@ -1,14 +1,9 @@
 ﻿#include<stdio.h>
 
-int getDate()
-{
-    int x = 0x11223344;
-    puts("getDate");
-    return x;
-}
 
 int main()
 {
-    int y = getDate();
+    const int a[] = {1,2,3,4,5};
+    int b = 20;
     return 0;
 }

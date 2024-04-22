@@ -4,19 +4,26 @@ void fun()
 {
 }
 
-union un
+enum color
 {
-    int i;
-    char a[4];
+    A ,
+    B ,
+    C = 0,
+    D
 };
+
+enum e{};
 
 int main()
 {
-    union un x;
-    x.a[0] = 0x78;
-    x.a[1] = 0x56;
-    x.a[2] = 0x34;
-    x.a[3] = 0x12;
-    printf("0x%x\n",x.i); //vs:0x12345678
+    int a = 1;
+    int b = 2;
+    enum color c =a;
+    c = b;
+    printf("%d\n",A);
+    printf("%d\n",B);
+    printf("%d\n",C);
+    printf("%d\n",D);
+    printf("%d\n",sizeof(enum e));
     return 0;
 }

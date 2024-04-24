@@ -766,7 +766,55 @@ int main()
 3. 有语法检查
 
 ### 1.19 typedef
-历史的误会-typedef也许应该是`typerename`,typedef就是用来给类型重命名的  
+历史的误会-typedef也许应该是`typerename`,typedef就是用来给类型重命名的    
+
+**typedef功能**
+- typedef可以一次指定多个别名  
+` typedef int A,B,C;`
+- typedef 为函数起别名的写法如下  
+`typedef signed char (*fp)(void);`
+- typedef 也可以用来为数组类型起别名  
+```
+typedef int five_ints[5];
+five_ints x = {11, 22, 33, 44, 55};
+```
+
+**简化类型声明**   
+C 语言有些类型声明相当复杂，比如下面这个  
+```char (*(*x(void))[5])(void);```  
+typedef 可以简化复杂的类型声明，使其更容易理解。首先，最外面一层起一个类型别名。  
+```
+typedef char (*Func)(void);
+Func (*x(void))[5];
+```
+这个看起来还是有点复杂，就为里面一层也定义一个别名。
+```
+typedef char (*Func)(void);
+typedef Func Arr[5];
+Arr* x(void);
+```
+上面代码就比较容易解读了。
+- x是一个函数，返回一个指向 Arr 类型的指针。
+- Arr是一个数组，有5个成员，每个成员是Func类型。
+- Func是一个函数指针，指向一个无参数、返回字符值的函数。
+
+**typedef与宏的区别**
+``` 
+//区别1:
+#define pINT int*
+typedef int* PINT
+
+PINT p1,p2; 
+pINT p3,p4;
+
+p2是什么类型,p4是什么类型?
+答:p2是整型指针,p4是整型. 可以看出typedef和宏有一定差别,用typedef更容易理解,更安全
+```
+
+//函数指针
+typedef (*)(....);
+//数组指针
+typedef (*)[];
 
 
 ### C语言中32个基本关键字总结_

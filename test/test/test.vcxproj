@@ -38,11 +38,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="C深度解剖2.md" />
     <None Include="C语言深度解剖.md" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4AE394C4-4DF5-44B3-8631-9DB6E7C45C64}</ProjectGuid>
-    <RootNamespace>text</RootNamespace>
+    <RootNamespace>test</RootNamespace>
     <ProjectName>test</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

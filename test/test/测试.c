@@ -1,14 +1,11 @@
 ﻿#include<stdio.h>
 
-const int  fun()
-{
-    int i = 1;
-    return  i;
-}
 
 
 int main()
 {
-    int a = fun();
+    int a = 10;
+    int* p = &a;
+    //int b = 20/*p;
     return 0;
 }

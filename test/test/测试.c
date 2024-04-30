@@ -1,13 +1,9 @@
 ﻿#include<stdio.h>
 
+#define SETBIT(x,n)  (x |= (1<<(n-1)))
+
 
 int main()
 {
-    int a = 10;
-    int b = 20;
-    a = a ^ b;
-    b = a ^ b;
-    a = a ^ b;
-    printf("a = %d, b = %d\n",a,b);
     return 0;
 }

@@ -3,7 +3,10 @@
 
 int main()
 {
-    printf("%d\n",-10/-3);
-    printf("%d\n",-10%-3);
+    int a = -10;
+    int d = 3;
+    printf("%d\n", a/d);
+    printf("%d\n", a % d);
+
     return 0;
 }

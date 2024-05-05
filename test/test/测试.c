@@ -1,9 +1,11 @@
 ﻿#include<stdio.h>
 #include<math.h>
 
+#define COMMENT //
+
 int main()
 {
-    int a = -10;
+    COMMENT int a = -10;
     int d = 3;
     printf("%d\n", a/d);
     printf("%d\n", a % d);

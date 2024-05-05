@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="C深度解剖2.md" />
+    <None Include="C深度解剖3.md" />
     <None Include="C语言深度解剖.md" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

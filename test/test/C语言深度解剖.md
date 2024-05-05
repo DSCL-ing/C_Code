@@ -349,11 +349,11 @@ printf("%d\n",NULL); //(void*)0
 ```
 //switch只能对整数进行判定
 switch(整型变量/常量/整型表达式){
-    case var1:
+    case 常量1:
         break;
-    case var2:
+    case 常量2:
         break;
-    case var3:
+    case 常量3:
         break;
     default:
         break;

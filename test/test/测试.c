@@ -1,7 +1,8 @@
 ﻿#include<stdio.h>
 #include<math.h>
 
-#define COMMENT //
+#define BMC /*
+#define EMC */
 
 int main()
 {

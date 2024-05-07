@@ -1,16 +1,17 @@
-﻿#include<stdio.h>
-#include<math.h>
+﻿#include <stdio.h>
 
-#define INIT_VALUE(a,b) a = 0; b = 0;
+
+#define N 100 
+
+void func()
+{
+    printf("%d\n", N);
+}
 
 int main()
 {
-    int a = 10;
-    int b = 20;
-    printf("before a = %d, b = %d\n",a,b);
-    int flag = 0;
-    scanf("%d",&flag);
-    if(flag)
-        INIT_VALUE(a,b);
+    printf("%d\n", N);
+#undef N
+    func();
     return 0;
 }

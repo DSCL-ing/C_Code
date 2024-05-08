@@ -121,6 +121,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);MACRO=0</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

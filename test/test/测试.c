@@ -1,17 +1,15 @@
 ﻿#include <stdio.h>
 
 
-#define N 100 
 
-void func()
-{
-    printf("%d\n", N);
-}
 
 int main()
 {
-    printf("%d\n", N);
-#undef N
-    func();
+#ifdef TEST1 || TEST2
+	puts("1");
+#else
+	puts("2");
+#endif
+
     return 0;
 }

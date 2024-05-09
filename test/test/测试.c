@@ -1,15 +1,9 @@
 ﻿#include <stdio.h>
 
-
-
+#define SQR(x) printf("The square of "#x" is %d.\n", ((x)*(x)));
 
 int main()
 {
-#ifdef TEST1 || TEST2
-	puts("1");
-#else
-	puts("2");
-#endif
-
+    SQR(8);
     return 0;
 }

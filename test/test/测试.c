@@ -1,9 +1,9 @@
 ﻿#include <stdio.h>
 
-#define SQR(x) printf("The square of "#x" is %d.\n", ((x)*(x)));
 
 int main()
 {
-    SQR(8);
+    const char* str = "helloworld!";
+    char arr[] = "helloworld";
     return 0;
 }

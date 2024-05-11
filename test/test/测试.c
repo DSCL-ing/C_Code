@@ -3,7 +3,8 @@
 
 int main()
 {
-    const char* str = "helloworld!";
-    char arr[] = "helloworld";
+    int a  = 0;
+    int b = 0;
+    printf("%p %p",&a,&b);
     return 0;
 }

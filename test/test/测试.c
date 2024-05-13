@@ -1,10 +1,11 @@
 ﻿#include <stdio.h>
 
-void func(int p[][6][7][8])
+void func()
 { }
 
 int main()
 {
-	int a[5][6][7][8] = { 0 };
+	printf("%p\n",func);
+	printf("%p\n",&func);
 	return 0;
 }

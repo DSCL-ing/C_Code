@@ -1,11 +1,16 @@
 ﻿#include <stdio.h>
 
-void func()
-{ }
+
+struct stu
+{
+	int num;
+	int arr[];
+};
 
 int main()
 {
-	printf("%p\n",func);
-	printf("%p\n",&func);
+	struct stu s;	
+	s.num = 5;
+	s.arr = malloc(4*s.num);
 	return 0;
 }

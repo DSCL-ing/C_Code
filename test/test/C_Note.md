@@ -185,3 +185,65 @@ malloc,查看内存,内存值为cd的是开辟给用户的空间
 
 
 内存验证
+```
+#include<stdio.h>
+#include<stdlib.h>
+
+void fun1()
+{
+
+}
+
+void fun2()
+{
+
+}
+
+int g_val1;
+int g_val2;
+
+int g_val3 = 0;
+int g_val4 = 0;
+
+int main()     
+{             
+
+  int a1 = 0;
+  int a2 = 0;
+  static int a3 = 0;
+
+  puts("栈区增长方向验证:");
+  printf("stack Area: &a1=%p\n",&a1);
+  printf("stack Area: &a2=%p\n",&a2);
+
+  puts("堆区增长方向验证:");
+  int *arr1 = (int*)malloc(sizeof(int)*3);
+  int *arr2 = (int*)malloc(sizeof(int)*3);
+  printf("heap Area: arr1=%p\n",arr1);
+  printf("heap Area: arr2=%p\n",arr2);
+
+  puts("未初始化数据区:");
+  printf("uninitialized data Area: %p\n",&g_val1);
+  printf("uninitialized data Area: %p\n",&g_val2);
+  
+  puts("已初始化数据区:");
+  printf("initialized data Area: %p\n",&g_val3);
+  printf("initialized data Area: %p\n",&g_val4);
+  printf("static data Area: %p\n",&a3);
+
+  puts("常量区:");
+  const char *str = "hello world!";
+  printf("constant Area: %p\n",str);
+
+  puts("代码区:");
+  printf("main addr: %p\n",main);
+  printf("code Area: fun1=%p\n",fun1);
+  printf("code Area: fun2=%p\n",fun2);
+  //在前面的先注册
+
+  return 0;    
+}   
+
+```
+
+![image-20240515124952154](C_Note.assets/image-20240515124952154.png)

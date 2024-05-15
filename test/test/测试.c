@@ -1,16 +1,13 @@
 ﻿#include <stdio.h>
 
 
-struct stu
-{
-	int num;
-	int arr[];
-};
+typedef char type_t;
+#define N 10
 
 int main()
 {
-	struct stu s;	
-	s.num = 5;
-	s.arr = malloc(4*s.num);
+	type_t *p = malloc(sizeof(type_t) * N);
+	
+	free(p);
 	return 0;
-}
+} 

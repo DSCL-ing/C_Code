@@ -1,13 +1,16 @@
 ﻿#include <stdio.h>
 
 
-typedef char type_t;
-#define N 10
+int Add(int a, int b)
+{
+    return a+b;
+}
 
 int main()
 {
-	type_t *p = malloc(sizeof(type_t) * N);
-	
-	free(p);
-	return 0;
-} 
+    int x = 0xA;
+    int y = 0xB;
+    int z = 0;
+    z = Add(x,y);
+    return 0;
+}

@@ -350,7 +350,7 @@ printf("%d\n",NULL); //(void*)0
 ### 1.8switch case组合
 - **基本语法结构**  
 ```
-//switch只能对整数进行判定
+//switch只能对整数进行判定,做不了复杂的逻辑计算
 switch(整型变量/常量/整型表达式){
     case 常量1:
         break;

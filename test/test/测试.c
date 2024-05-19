@@ -1,16 +1,25 @@
 ﻿#include <stdio.h>
+#include<stdarg.h>
 
-
-int Add(int a, int b)
+FindMax(int num, ...)
 {
-    return a+b;
+    va_list arg;
+    va_start(arg,num);
+    int max = 0;
+    max = va_arg(arg,int);
+    for()
+
+    return;
 }
 
 int main()
 {
-    int x = 0xA;
-    int y = 0xB;
-    int z = 0;
-    z = Add(x,y);
+#if defined(_INC_STDARG)
+    #pragma message("included stdarg.h");
+#else
+    #pragma message("no included stdarg.h");
+#endif
+
+     
     return 0;
 }

@@ -402,7 +402,7 @@ ebp-14是变量y的地址,ebp-8是x的地址,即先压入y,再压入x,然后再�
 
 ## C语言提供的可变参数方案
 
-## stdarg.h
+### stdarg.h
 
 在stdarg.h文件中有如下几个宏定义：
 
@@ -430,7 +430,7 @@ ebp-14是变量y的地址,ebp-8是x的地址,即先压入y,再压入x,然后再�
 
 
 
-### va_list
+#### va_list
 
 用于定义可以访问可变参数部分的变量
 
@@ -446,21 +446,58 @@ typedef char* va_list;
 
 
 
-### va_start
+#### va_start
 
 它可以通过第一个参数来定位可变参数的位置,使arg指向可变参数部分
 
 
 
-### va_arg
+#### va_arg
 
 通过arg,和类型,返回对应的值
 
 
 
-### va_end
+#### va_end
 
 arg使用完毕后,使arg指向NULL. 即收尾工作
+
+
+
+### 简单的可变参数程序
+
+```
+#include <stdio.h>
+#include <stdarg.h>
+
+int FindMax(int num, ...)
+{
+    va_list arg;
+    va_start(arg, num);
+    int max = 0;
+    max = va_arg(arg, int);
+    for (int i = 0; i < num - 1; i++)
+    {
+        int cur = va_arg(arg, int);
+        if (cur > max)
+        {
+            max = cur;
+        }
+    }
+    va_end(arg);
+
+    return max;
+}
+
+int main()
+{
+    int max = FindMax(5,0x11,0x21,0x31,0x41,0x51);
+    printf("max = %d\n", max);
+    return 0;
+}
+```
+
+
 
 
 

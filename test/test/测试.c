@@ -33,7 +33,8 @@ int main()
     char c = 'c';
     char d = 'd';
     char e = 'e';
-    int max = FindMax(5, a, b, c, d, e);
+    //int max = FindMax(5, a, b, c, d, e);
+    int max = FindMax(5,0x11,0x21,0x31,0x41,0x51);
     printf("max = %d\n", max);
     return 0;
 }

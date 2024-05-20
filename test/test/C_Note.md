@@ -390,9 +390,11 @@ ebp-14是变量y的地址,ebp-8是x的地址,即先压入y,再压入x,然后再�
 
 ## 可变参数的原理
 
-在函数栈帧的汇编分析中可知,函数形参在函数调用前定义,且定义顺序从右往左,依次压栈.
+​	在函数栈帧的汇编分析中可知,函数形参在函数调用前定义,参数之间位置相对固定,且定义顺序从右往左,依次压栈.
 
-因为是可变参数,如果要我们使用,我们只要知道函数形参的第一个形参的起始地址,然后根据每个参数的类型,得到它们的内存空间布局就可以使用了. 
+​	因为是可变参数,如果要我们使用,我们只要知道函数形参的第一个形参的起始地址,然后根据每个参数的类型,得到它们的内存空间布局就可以使用了. 
+
+<br>
 
 可变参数至少需要固定一个形参,否则会报错,为什么? 
 
@@ -408,6 +410,10 @@ ebp-14是变量y的地址,ebp-8是x的地址,即先压入y,再压入x,然后再�
 原理是这样,但如果要我们手动去做,显然是一件非常麻烦的事情.
 
 因此C语言提供了一套方案,提供了几个宏便于用户更方便地使用可变参数列表.
+
+<br>
+
+<br>
 
 ## C语言提供的可变参数方案
 
@@ -428,13 +434,23 @@ ebp-14是变量y的地址,ebp-8是x的地址,即先压入y,再压入x,然后再�
 其定义在vadefs.h中分别为：
 
 ```
-#define _INTSIZEOF(n) ((sizeof(n)+sizeof(int)-1)&~(sizeof(int) - 1) ) 
+//ap ~= arg
+//va_list == char*
+//_ADDRESSOF ~= 取地址
+//v  ~= num
 
-#define va_start(ap,v) ( ap = (va_list)&v + _INTSIZEOF(v) ) //第一个可选参数地址 
+#define _INTSIZEOF(n)          ((sizeof(n) + sizeof(int) - 1) & ~(sizeof(int) - 1))
+//计算对齐后n的大小,例如计算char,四字节对齐,则_intsizeof char为4;
+//四字节对齐,如果size是1,2,3,4,则对齐size都是4. 如果size是5,6,7,8,则对齐size都是8.依次类推
 
-#define va_arg(ap,t) ( *(t *)((ap += _INTSIZEOF(t)) - _INTSIZEOF(t)) ) //下一个参数地址 
+#define _ADDRESSOF(v)          (&(v)) //计算v的地址
 
-#define va_end(ap) ( ap = (va_list)0 ) // 将指针置为无效
+#define __crt_va_start_a(ap, v) ((void)(ap = (va_list)_ADDRESSOF(v) + _INTSIZEOF(v)))//第一个可选参数地址
+// va_start : ap=(char*)&num + intsizeof(num); 
+
+#define __crt_va_arg(ap, t)     (*(t*)((ap += _INTSIZEOF(t)) - _INTSIZEOF(t)))//下一个参数地址
+
+#define __crt_va_end(ap)        ((void)(ap = (va_list)0))// 将指针置为无效
 ```
 
 
@@ -443,8 +459,8 @@ ebp-14是变量y的地址,ebp-8是x的地址,即先压入y,再压入x,然后再�
 
 用于定义可以访问可变参数部分的变量
 
-```
-va_list arg;
+```c
+va_list arg; //定义
 ```
 
 va_list是char*类型的指针,可以按一字节的方式进行字节级别的数据读取.
@@ -458,6 +474,8 @@ typedef char* va_list;
 #### va_start
 
 它可以通过第一个参数来定位可变参数的位置,使arg指向可变参数部分
+
+
 
 
 

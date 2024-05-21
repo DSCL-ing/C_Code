@@ -1,40 +1,12 @@
 ﻿#include <stdio.h>
 #include <stdarg.h>
 
-FindMax(int num, ...)
+
+int main(int argc, char* argv[], char* envp[])
 {
-    va_list arg;
-    va_start(arg, num);
-    int max = 0;
-    max = va_arg(arg, int);
-    for (int i = 0; i < num - 1; i++)
+    for (int i = 0; envp[i]; i++)
     {
-        int cur = va_arg(arg, int);
-        if (cur > max)
-        {
-            max = cur;
-        }
+        printf("%s\n",envp[i]);
     }
-    va_end(arg);
-
-    return max;
-}
-
-int main()
-{
-#if defined(_INC_STDARG)
-#pragma message("included stdarg.h")
-#else
-#pragma message("no included stdarg.h");
-#endif
-
-    char a = 'a';
-    char b = 'b';
-    char c = 'c';
-    char d = 'd';
-    char e = 'e';
-    //int max = FindMax(5, a, b, c, d, e);
-    int max = FindMax(5,0x11,0x21,0x31,0x41,0x51);
-    printf("max = %d\n", max);
     return 0;
 }

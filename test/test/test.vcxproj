@@ -62,10 +62,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C_Note.md" />
     <None Include="C深度解剖2.md" />
     <None Include="C深度解剖3.md" />
+    <None Include="C深度解剖4.md" />
     <None Include="C语言深度解剖.md" />
+    <None Include="计算机网络.md" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4AE394C4-4DF5-44B3-8631-9DB6E7C45C64}</ProjectGuid>

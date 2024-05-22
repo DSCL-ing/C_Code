@@ -47,7 +47,10 @@
     <None Include="C深度解剖3.md">
       <Filter>头文件</Filter>
     </None>
-    <None Include="C_Note.md">
+    <None Include="C深度解剖4.md">
+      <Filter>头文件</Filter>
+    </None>
+    <None Include="计算机网络.md">
       <Filter>头文件</Filter>
     </None>
   </ItemGroup>

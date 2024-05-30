@@ -4744,6 +4744,12 @@ fgetws根据流是以文本模式还是二进制模式打开，分别将宽字�
 //}
 
 
+
+BUGS
+Never use gets().Because it is impossible to tell without knowing the data in advance how many characters gets() will read, and because gets() will continue to store characters past the end of the buffer, it is extremely dangerous to use.It has been used to break computer security.Use fgets() instead.
+It is not advisable to mix calls to input functions from the stdio library with low - level calls to read(2) for the file descriptor associated with the input stream; the results will be undefinedand very probably not what you want.
+有保护的情况下超长输入会使程序崩溃，崩溃本身就是一攻击，还会牵扯到泄密一类的问题。
+它可以通过溢出溢出直接改掉你程序的数据，你程序执行总要进行条件判断，改掉数据就可以控制程序了，不需要改代码段
 //char *gets(char *buffer); Get a line from the stdin stream.
 
 

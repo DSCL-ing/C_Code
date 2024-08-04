@@ -66,6 +66,8 @@
     <None Include="C深度解剖3.md" />
     <None Include="C深度解剖4.md" />
     <None Include="C语言深度解剖.md" />
+    <None Include="位段 -- 内存布局详解C语言.md" />
+    <None Include="模拟实现 srtcat(字符串追加)  --浅谈C语言.md" />
     <None Include="计算机网络.md" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -7,6 +7,9 @@
     <Filter Include="头文件">
       <UniqueIdentifier>{b023bd59-084e-4f47-8bd6-c421e26b0967}</UniqueIdentifier>
     </Filter>
+    <Filter Include="模拟实现">
+      <UniqueIdentifier>{005fea69-e6b6-4d24-b328-4de5601ab692}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="（开发）学生信息管理系统.c">
@@ -52,6 +55,12 @@
     </None>
     <None Include="计算机网络.md">
       <Filter>头文件</Filter>
+    </None>
+    <None Include="位段 -- 内存布局详解C语言.md">
+      <Filter>头文件</Filter>
+    </None>
+    <None Include="模拟实现 srtcat(字符串追加)  --浅谈C语言.md">
+      <Filter>模拟实现</Filter>
     </None>
   </ItemGroup>
 </Project>

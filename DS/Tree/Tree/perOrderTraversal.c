@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+﻿#define _CRT_SECURE_NO_WARNINGS 1
 #include"Tree.h"
 
 int TreeSize(struct BinaryTreeNode *root)
@@ -10,7 +10,7 @@ void _preorderTraversal(struct BinaryTreeNode *root, int *str, int* pi)
 {
 	if (!root)
 	{
-		return NULL;
+		return ;
 	}
 	str[(*pi)++] = root->data;
 	_preorderTraversal(root->left, str, pi);

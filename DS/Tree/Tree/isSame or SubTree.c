@@ -1,4 +1,4 @@
-
+ï»¿
 /**
 * Definition for a binary tree node.
 * struct TreeNode {
@@ -8,6 +8,13 @@
 * };
 */
 
+#include<stdio.h>
+struct TreeNode
+{
+	int val;
+	struct TreeNode* left;  //left sub tree
+	struct TreeNode* right; //right sub tree
+};
 
 bool isSameTree(struct TreeNode* p, struct TreeNode* q){
 	if (p == NULL && q == NULL)
@@ -15,8 +22,8 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q){
 		return 1;
 	}
 	else if (p == NULL&&p != q || q == NULL && p != q)
-	{ /*×¢ÒâÂß¼­ÔËËãÏÈºóË³Ğò£¬Õû¸öif-elseÊÇÅĞ¶ÏÓĞ1¸öNULLÒÔÉÏÎªÇ°Ìá£¬ÔËËã·ûÒªÇóÏÈÓĞ¿Õ*/
-		//¿ÉÒÔÓÅ»¯³É p == NULL && q == NULL,ÒòÎªÒÑÓĞÇ°Ìá;
+	{ /*æ³¨æ„é€»è¾‘è¿ç®—å…ˆåé¡ºåºï¼Œæ•´ä¸ªif-elseæ˜¯åˆ¤æ–­æœ‰1ä¸ªNULLä»¥ä¸Šä¸ºå‰æï¼Œè¿ç®—ç¬¦è¦æ±‚å…ˆæœ‰ç©º*/
+		//å¯ä»¥ä¼˜åŒ–æˆ p == NULL && q == NULL,å› ä¸ºå·²æœ‰å‰æ;
 		return 0;
 	}
 
@@ -40,7 +47,7 @@ bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot){
 		return false;
 	}
 
-	if (root->val == subRoot->val) //Èç¹ûÏàµÈ£¬ÇÒÊÇÏàÍ¬×ÓÊ÷£¬·µ»ØÕæ
+	if (root->val == subRoot->val) //å¦‚æœç›¸ç­‰ï¼Œä¸”æ˜¯ç›¸åŒå­æ ‘ï¼Œè¿”å›çœŸ
 	{
 		if (isSameTree(root, subRoot))
 		{

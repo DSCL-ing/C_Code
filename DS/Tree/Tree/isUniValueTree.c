@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+ï»¿#define _CRT_SECURE_NO_WARNINGS 1
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-//ÎÒµÚÒ»´ÎĞ´µÄ´úÂë£º»¹Ã»ÁìÎòµİ¹éÕæÚĞ
+//æˆ‘ç¬¬ä¸€æ¬¡å†™çš„ä»£ç ï¼šè¿˜æ²¡é¢†æ‚Ÿé€’å½’çœŸè°›
 /*
 bool isUnivalTree(struct TreeNode* root){
 	int index = 1;
@@ -27,7 +27,7 @@ bool isUnivalTree(struct TreeNode* root){
 			index = isUnivalTree(root->left);
 	}
 
-	if (index == 0)   //ÅĞ¶Ï×ó×ÓÊ÷ÊÇ·ñÓĞÎÊÌâ£¬È»ºóÔÙµ½ÓÒ×ÓÊ÷
+	if (index == 0)   //åˆ¤æ–­å·¦å­æ ‘æ˜¯å¦æœ‰é—®é¢˜ï¼Œç„¶åå†åˆ°å³å­æ ‘
 	{
 		return index;
 	}
@@ -47,6 +47,14 @@ bool isUnivalTree(struct TreeNode* root){
 }*/
 
 
+#include<stdio.h>
+struct TreeNode
+{
+	int val;
+	struct TreeNode* left;  //left sub tree
+	struct TreeNode* right; //right sub tree
+};
+
 bool isUnivalTree(struct TreeNode* root){
 
 	if (root == NULL)
@@ -63,7 +71,6 @@ bool isUnivalTree(struct TreeNode* root){
 	{
 		return false;
 	}
-	//·Ö¸îÏß£¬ÏÈ×öºÃ×Ô¼º£¨µÚÒ»¸ö£©
 
 	return isUnivalTree(root->left) && isUnivalTree(root->right);
 }

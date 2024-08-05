@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+ï»¿#define _CRT_SECURE_NO_WARNINGS 1
 
 #include"SeqList.h"
 
@@ -15,7 +15,7 @@ void Print(SL*ps)
 	int i = 0;
 	while (i<=ps->size-1)
 	{
-		printf(FORMAT(%d), ps->a[i++]);
+		printf(FORMAT, ps->a[i++]);
 	}
 	printf("\n");
 }
@@ -25,7 +25,7 @@ void checkcapacity(SL*ps)
 {
 	if (ps->size == ps->capacity)
 	{
-		//À©Èİ¶ş±¶ÊÇ¸öÊÊÖĞµÄ·½Ê½
+		//æ‰©å®¹äºŒå€æ˜¯ä¸ªé€‚ä¸­çš„æ–¹å¼
 		int newcapacity = ps->capacity == 0 ? 4 : 2 * (ps->capacity);
 		SLDataType *ptr = (SLDataType *)realloc(ps->a, newcapacity* sizeof(SLDataType));
 		if (ptr == NULL)
@@ -82,7 +82,7 @@ void PopFront(SL*ps)
 	ps->size--;
 }
 
-//ÄÚ´æÊÍ·Å
+//å†…å­˜é‡Šæ”¾
 void SLDestory(SL*ps)
 {
 	free(ps->a);
@@ -93,7 +93,7 @@ int SLFind(SL*ps)
 {
 	{
 		SLDataType x = 0;
-		scanf(FORMAT(%d), &x);
+		scanf(FORMAT, &x);
 		if (ps->size > 0)
 		{
 			int begin = 0;
@@ -108,7 +108,7 @@ int SLFind(SL*ps)
 	}
 }
 
-//position:µÈ¼¶Î»ÖÃ£¬¶¨Î»£¨Á¢³¡£¬¸ß¶È£©  location:Î»ÖÃ
+//position:ç­‰çº§ä½ç½®ï¼Œå®šä½ï¼ˆç«‹åœºï¼Œé«˜åº¦ï¼‰  location:ä½ç½®
 void SLInsert(SL*ps, int pos, SLDataType x)
 {
 	;

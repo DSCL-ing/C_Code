@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+ï»¿#define _CRT_SECURE_NO_WARNINGS 1
 
 #pragma once
 #include<stdio.h>
@@ -6,7 +6,7 @@
 
 typedef int SLDataType;
 
-#define FORMAT "%d"  //¸ñÊ½
+#define FORMAT "%d"  //æ ¼å¼
 
 typedef struct SeqList
 {
@@ -16,29 +16,29 @@ typedef struct SeqList
 }SL;
 
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void InitSeqList(SL*ps);//
 
-//´òÓ¡
+//æ‰“å°
 void Print(SL*ps);
 
-//Î²²å
+//å°¾æ’
 void PushBack(SL* ps,SLDataType x);
 
-//Í·²å
+//å¤´æ’
 void PushFront(SL*ps, SLDataType x);
 
-//Î²É¾
+//å°¾åˆ 
 void PopBack(SL*ps);
 
-//Í·É¾
+//å¤´åˆ 
 void PopFront(SL*ps);
 
-//ÄÚ´æÊÍ·Å
+//å†…å­˜é‡Šæ”¾
 void SLDestory(SL*ps);
 
-//²éÕÒ
+//æŸ¥æ‰¾
 int SLFind(SL*ps);
 
-//²åÈë
+//æ’å…¥
 void SLInsert(SL*ps, int pos, SLDataType x);

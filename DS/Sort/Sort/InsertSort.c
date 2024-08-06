@@ -1,35 +1,35 @@
-
+ï»¿
 #include"Sort.h"
 
 /*
-1¡¢Ö»ÅÅÒ»¸öÊ±£ºÍùÇ°±È½Ï£¬Âú×ã²åÈë£¬²»Âú×ã¼ÌÐøÍùÇ°£¬Í¬Ê±Ç°ÃæÊý×éÍùºóÅ²¶¯
-2¡¢È«²¿Ò»ÆðÅÅ£º´Ó0¿ªÊ¼µ½n-1
+1ã€åªæŽ’ä¸€ä¸ªæ—¶ï¼šå¾€å‰æ¯”è¾ƒï¼Œæ»¡è¶³æ’å…¥ï¼Œä¸æ»¡è¶³ç»§ç»­å¾€å‰ï¼ŒåŒæ—¶å‰é¢æ•°ç»„å¾€åŽæŒªåŠ¨
+2ã€å…¨éƒ¨ä¸€èµ·æŽ’ï¼šä»Ž0å¼€å§‹åˆ°n-1
 */
 
 
 
-//Ö±½Ó²åÈëÅÅÐò
+//ç›´æŽ¥æ’å…¥æŽ’åº
 void InsertSort(int* a, int n)
 {
-	for (int i = 0; i < n - 1; i++)  //n¸öÊý£¬Ö»ÐèÅÅn-1¸ö£¬£¨ÒòÎªµÚÒ»¸ö±Ø¶¨ÓÐÐò--Ä¬ÈÏ£©
+	for (int i = 0; i < n - 1; i++)  //nä¸ªæ•°ï¼Œåªéœ€æŽ’n-1ä¸ªï¼Œï¼ˆå› ä¸ºç¬¬ä¸€ä¸ªå¿…å®šæœ‰åº--é»˜è®¤ï¼‰
 	{
-		int end = i;  //ÏÂ±ê £¬ ÒÑÅÅÐòÊý×é¡¾0 - end¡¿
-		int tmp = a[end + 1];  //ÔªËØ½»»»ÓÃ £¬ Êý×éÍùºó¸²¸ÇÅ²¶¯
+		int end = i;  //ä¸‹æ ‡ ï¼Œ å·²æŽ’åºæ•°ç»„ã€0 - endã€‘
+		int tmp = a[end + 1];  //å…ƒç´ äº¤æ¢ç”¨ ï¼Œ æ•°ç»„å¾€åŽè¦†ç›–æŒªåŠ¨
 
 
-		//Ò»¸öÔªËØÅÅÐò£¬ÅÅÒ»¸ö(ÏÈ¼ÙÏë³öÒ»¶ÑÂÒÐòÊý×é)
+		//ä¸€ä¸ªå…ƒç´ æŽ’åºï¼ŒæŽ’ä¸€ä¸ª(å…ˆå‡æƒ³å‡ºä¸€å †ä¹±åºæ•°ç»„)
 		while (end >= 0)
 		{
 			if (a[end] > tmp)
 			{
-				a[end + 1] = a[end]; //ÍùºóÅ²¶¯
-				end--;   //±ÈÏÂÒ»¸öÔªËØ
+				a[end + 1] = a[end]; //å¾€åŽæŒªåŠ¨
+				end--;   //æ¯”ä¸‹ä¸€ä¸ªå…ƒç´ 
 			}
 			else
 			{
-				break; //²åÈë
+				break; //æ’å…¥
 			}
 		}
-		a[end + 1] = tmp; //²åÔÚendºóÃæ
+		a[end + 1] = tmp; //æ’åœ¨endåŽé¢
 	}
 }
